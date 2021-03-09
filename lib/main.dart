@@ -8,7 +8,7 @@ void main() {
       home: Scaffold(
         backgroundColor: Colors.blue,
         appBar: AppBar(
-          title: Text('Magic 8'),
+          title: Text('Magic 8 - Ask Me Anything'),
           backgroundColor: Colors.blue,
         ),
         body: MagicEight(),
@@ -25,6 +25,12 @@ class MagicEight extends StatefulWidget {
 class _MagicEightState extends State<MagicEight> {
   int magicNumber = 1;
 
+  void randomize() {
+    setState(() {
+      magicNumber = Random().nextInt(4) + 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,11 +38,9 @@ class _MagicEightState extends State<MagicEight> {
         child: Expanded(
           child: FlatButton(
             onPressed: () {
-              setState(() {
-                magicNumber = Random().nextInt(4) + 1;
-              });
+              randomize();
             },
-            child: Image.asset('images/ball${magicNumber}.png'),
+            child: Image.asset('images/ball$magicNumber.png'),
           ),
         ),
       ),
